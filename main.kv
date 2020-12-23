@@ -1,0 +1,188 @@
+<ItemDrawer>:
+    theme_text_color: "Custom"
+    on_release:
+        self.parent.set_color_item(self)
+
+    IconLeftWidget:
+        id: icon
+        icon: root.icon
+        theme_text_color: "Custom"
+        text_color: root.text_color
+
+
+<ContentNavigationDrawer>:
+    orientation: "vertical"
+    padding: "8dp"
+    spacing: "8dp"
+
+    MDLabel:
+        text: "Calendar Companion"
+        font_style: "Subtitle1"
+        size_hint_y: None
+        height: self.texture_size[1]
+
+
+    ScrollView:
+
+        DrawerList:
+            id: md_list
+
+Screen:
+    id: scr
+    NavigationLayout:
+
+        ScreenManager:
+            id: screen_manager
+            Screen:
+                name: "transition"
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    MDToolbar:
+                        title: "Current Event"
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state("toggle")]]
+                        right_action_items: [['refresh', lambda x: app.refresh()]]
+                        elevation:5
+                    Widget:
+
+                MDIconButton:
+                    icon: "plus"
+                    pos_hint: {"center_x": .5, "center_y": .4}
+                    on_press:
+                        app.interrupt()
+
+                MDIconButton:
+                    icon: "skip-next"
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    on_release:
+                        app.transition()
+
+
+                MDIconButton:
+                    icon: "skip-forward"
+                    pos_hint: {"center_x": .75, "center_y": .5}
+                    on_press:
+                        app.skip()
+
+
+                MDIconButton:
+                    icon: "undo"
+                    pos_hint: {"center_x": .25, "center_y": .5}
+                    on_press:
+                        app.undo()
+
+                MDCard:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "280dp", "40dp"
+                    focus_behavior: True
+                    ripple_behavior: True
+                    pos_hint: {"center_x": .5, "center_y": .8}
+
+                    MDLabel:
+                        id: event_0_label
+                        text: ""
+                        theme_text_color: "Secondary"
+                        height: self.texture_size[1]
+                        halign: "center"
+
+
+                MDCard:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "280dp", "40dp"
+                    focus_behavior: True
+                    ripple_behavior: True
+                    pos_hint: {"center_x": .5, "center_y": .3}
+
+                    MDLabel:
+                        id: event_1_label
+                        text: ""
+                        theme_text_color: "Secondary"
+                        height: self.texture_size[1]
+                        halign: "center"
+
+
+                MDCard:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "280dp", "40dp"
+                    focus_behavior: True
+                    ripple_behavior: True
+                    pos_hint: {"center_x": .5, "center_y": .2}
+
+                    MDLabel:
+                        id: event_2_label
+                        text: ""
+                        theme_text_color: "Secondary"
+                        height: self.texture_size[1]
+                        halign: "center"
+
+
+                MDCard:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "280dp", "40dp"
+                    focus_behavior: True
+                    ripple_behavior: True
+                    pos_hint: {"center_x": .5, "center_y": .1}
+
+                    MDLabel:
+                        id: event_3_label
+                        text: ""
+                        theme_text_color: "Secondary"
+                        height: self.texture_size[1]
+                        halign: "center"
+
+
+            Screen:
+                name: "agenda"
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    MDToolbar:
+                        title: "Agenda"
+                        md_bg_color: app.theme_cls.primary_color
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state("toggle")]]
+
+                    Widget:
+
+                ScrollView:
+                    DrawerList:
+                        MDLabel:
+                            id: event_display_list
+                            text: ""
+                            theme_text_color: "Secondary"
+
+            Screen:
+                name: "report"
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    MDToolbar:
+                        title: "Report"
+                        md_bg_color: app.theme_cls.primary_color
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state("toggle")]]
+
+                    Widget:
+
+
+            Screen:
+                name: "settings"
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    MDToolbar:
+                        title: "Settings"
+                        md_bg_color: app.theme_cls.primary_color
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state("toggle")]]
+
+                    Widget:
+
+        MDNavigationDrawer:
+            id: nav_drawer
+
+            ContentNavigationDrawer:
+                id: content_drawer
+
+
