@@ -1,4 +1,3 @@
-from __future__ import print_function
 from datetime import date
 from datetime import datetime
 from datetime import timedelta
@@ -14,7 +13,6 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty
 from kivymd.uix.list import OneLineIconListItem, MDList
 from kivymd.app import MDApp
-from kivy.core.window import Window
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.list import MDList
 from kivy.uix.screenmanager import ScreenManager, Screen
